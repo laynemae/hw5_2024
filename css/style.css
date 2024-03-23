@@ -1,67 +1,91 @@
 @keyframes mymove {
+  /* for the animation to grow from 25-475px and opacity 0-1 */
   from {width: 25px;
         opacity: 0;}
   to {width: 475px;
       opacity: 1;}
 }
 
-.logo {
-  animation: mymove 5s; 
+#logo {
+  animation: mymove 5s forwards; 
+  /* set the animation w/ our keyframes, make it last 5s, and use forwards 
+  to have the final result of animation stay after its over */ 
   display: inline-block;
+  /* set the display to inline-block so that it sits inline w/ other content like the nav links */ 
 }
 
 body {
   font-family: "Poppins", serif;
-  background-image: url('images/concrete_seamless.png');
+  /* use Poppins font w/ serif as a backup */ 
+  background-image: url('../images/concrete_seamless.png');
+  /* background image w/ concrete image */ 
   background-color: #f1f1f1;
+  /* backup color for the background */ 
 }
 
 header {
   display: flex;
+  /* set display to flex */
   flex-direction: column;
+  /* match display to the photo */
   align-items: center; 
   justify-content: center;
+  /* align + justify to ensure that the header is at the center of the page */
 }
 
 .nav_links {
   align-items: center;
+  /* align to ensure that the nav links are at the center of the page */
 }
 
 a:visited, a:hover, a:active, a:focus {
   color: blue;
+  /* set color to blue so that links stay the same color as before they were visited */
 }
 
 .pricing {
   display: flex;
+  /* set pricing class to flex */ 
   flex-direction: column; 
   align-items: center; 
   justify-content: center; 
+  /* arranges the items so they're on top of each other like the ex. image */
 }
 
 .card {
   display: flex;
   flex-direction: column;
   align-items: center;
+  /* arranges the items so they're on top of each other like the ex. image */
   width: 450px; 
+  /* set width of cards to be 450px */
   background-color: white; 
   border-radius: 50px 50px 0 0;
   border: solid 0px transparent;
+  /* set this border so that the header elements' border doesn't show up here too */ 
   overflow: hidden; 
+  /* make sure that the rounded borders don't have white behind them by hiding the overflow */
 }
 
 .card > header {
+  /* select only the header elements of the card class */ 
   background: #288088; 
+  /* set the background */
   border: solid 2px #45ADAD;
+  /* set the border */
   padding-top: 20px;
   padding-bottom: 20px;
+  /* set padding */
   border-radius: 50px 50px 0 0;
+  /* round the borders to the top left and right corners only */
   overflow: hidden; 
-  /* border-radius: 50px 50px 0 0; */
+  /* make sure that the rounded borders don't have white behind them by hiding the overflow */
   width: 100%;
 }
 
 .card button {
   padding: 8px 10px;
+  /* set padding so that the text in the button match the image */
 }
 
 .card > * {
@@ -73,61 +97,81 @@ a:visited, a:hover, a:active, a:focus {
 .gallery {
   display: flex;
   flex-wrap: wrap;
+  /* wrap the images to match ex. so they dont overlap and start on new 
+  lines when needed */ 
   justify-content: center; 
   align-content: center; 
 }
 
 .gallery img {
+  /* style images specifically in the gallery class */
   display: flex;
   border: solid 10px #50C7C7;
+  /* set border for gallery images to what was specified */ 
   margin: 10px 10px 10px 10px;
   width: 300px;
+  /* same for margin and width */
   height: auto;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .logo {
+  /* if client prefers reduced motion, turn off the animation */
+  #logo {
       animation: none; 
   }
 }
 
 @media screen and (min-width:900px) { 
+  /* media query for when the minimum width is 900px in the display */ 
   header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    /* ensure that the nav links and logo are on opposite ends of the header bar */
     position: sticky;
     top: 0px;
+    /* set position to sticky and top to 0px so that the header stays on top of 
+    screen at all times */
   }
 
   .nav_links {
     display: flex;
     justify-content: center;
     align-items: center;
+    /* set nav links to be side-by-side instead of on top of eachother */
   }
 
   .pricing {
     display: flex;
     flex-basis: 275px;
+    /* specify size of 275px for the cards using flex property */
     flex-direction: row;
-    flex-basis: 325px;
+    /* unlike before, the cards should appear side by side and not next to eachother */
   }
 
   .card header {
     display: flex;
     flex-wrap: nowrap;
+    /* make the items in the card not wrap to next line */
     align-items: center;
     flex-direction: row;
+    /* match the ex. */
     justify-content: flex-start;
+    /* set content inside the header, like $30, to the start of the card */ 
     position: static;
+    /* make sure that the header for the cards don't stay at the top like the other header */
     top: auto;
+    /* reset the top since it was set to 0 previously */
   }
 }
 
 @media screen and (orientation:portrait) { 
+  /* media query for when display is set to portrait mode */ 
   .body {
     font-family: Arial, Helvetica;
+    /* set font to arial, then helvetica as backup */
     background-image: none;
+    /* get rid of the background image */
   }
 
   .nav_links {
@@ -135,26 +179,35 @@ a:visited, a:hover, a:active, a:focus {
     justify-content: center;
     align-items: center;
     gap: 160px;
+    /* add space between the navigation links */
   }
 
   .pricing {
     display: flex;
     align-items: flex-end;
+    /* align the cards along the bottom */
     flex-direction: row;
+    /* ensure the cards are next to each other not on top */
   }
 
   .card {
     border: solid 2px #45ADDD;
+    /* set border for the card as specified */
     flex-basis: 325px;
+    /* specify size of 325px for the cards using flex property */
   }
 
   .gallery, #gallery {
+    /* ensure that the gallery section cannot be seen in this mode */ 
     visibility: hidden;
     display: none;
   }
 
   .card li:nth-child(2)::after {
+    /* add thumbs up property after the second line */
     content: "\1F44D"; 
+    /* thumbs up image */
     margin-right: 5px;
+    /* add a margin so that they're not right on top of each other */
   }
 } 
